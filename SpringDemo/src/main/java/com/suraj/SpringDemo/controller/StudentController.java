@@ -1,6 +1,5 @@
 package com.suraj.SpringDemo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.repository.query.Param;
@@ -10,36 +9,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suraj.SpringDemo.model.Student;
+import com.suraj.SpringDemo.service.ServiceImpl;
+import com.suraj.SpringDemo.service.StudentServices;
 
 @RestController
 public class StudentController {
 
-	private List<Student> students=new ArrayList<Student>();
+	private StudentServices serviceImpl;
+	
 	
 	public StudentController() {
-		students.add(new Student(1, "suraj"));
-		students.add(new Student(2, "yash"));
-		students.add(new Student(3, "pratik"));
+		serviceImpl=new ServiceImpl();
 	}
 	
 	@RequestMapping("/fetchAll")
 	public List<Student> fetchAllStud(){
-		return students;
+		return serviceImpl.fetchAllStudent();
 	}
 	
 	@RequestMapping("/fetchStud/{id}") 
 	public Student fetchStudent(@PathVariable("id") int id) { 
-		  return students.get(id);
+		  return serviceImpl.fetchStudent(id);
 	 }
 	 
 	@RequestMapping("/insertStud")
-	public void insertStud(@RequestBody Student student) {
-		System.out.println(students.add(student));
+	public boolean insertStud(@RequestBody Student student) {
+		return serviceImpl.insertStudent(student);
 	}
 	
 	@RequestMapping("/delStud/{id}")
-	public void delStud(@PathVariable int id) {
-		students.remove(id);
+	public boolean delStud(@PathVariable int id) {
+		return serviceImpl.delStudent(id);
 	}
 	  
 }
