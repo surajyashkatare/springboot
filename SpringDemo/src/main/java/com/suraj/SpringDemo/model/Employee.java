@@ -1,13 +1,13 @@
 package com.suraj.SpringDemo.model;
 
-public class Student {
+public class Employee {
 	
 	private int id;
 	private String name;
-	public Student() {
+	public Employee() {
 		super();
 	}
-	public Student(int id, String name) {
+	public Employee(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
