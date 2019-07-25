@@ -4,6 +4,7 @@ public class Employee {
 	
 	private int id;
 	private String name;
+	
 	public Employee() {
 		super();
 	}
@@ -26,7 +27,7 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + "]";
+		return "Employee [id=" + id + ", name=" + name + "]";
 	}	
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.suraj.SpringDemo.model.Employee;
 
-public class EmpServiceImpl implements EmployeeServices {
+public class EmpServiceImpl implements EmployeeService {
 
 	private List<Employee> employees;
 	
@@ -16,10 +16,11 @@ public class EmpServiceImpl implements EmployeeServices {
 		employees.add(new Employee(3, "pratik"));
 	}
 	@Override
-	public Employee insertEmployee(Employee employee) {
-		employee.setId(employees.size()+1);
-		 employees.add(employee);
-		 return employee;
+	public int insertEmployee(Employee employee) {
+		if(employees.add(employee))
+			return employees.size();	
+		else
+			return 0;
 	}
 
 	@Override
